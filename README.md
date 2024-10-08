@@ -1,8 +1,8 @@
-# Diabetes Prediction Using Machine Learning
+# Diabetes Prediction Using Machine Learning 🩺📊
 
 This project aims to predict the likelihood of an individual having diabetes based on various health indicators using two machine learning models: **Random Forest** and **Logistic Regression**. The dataset used comes from the CDC's 2015 Behavioral Risk Factor Surveillance System (BRFSS), with health-related features such as BMI, smoking status, and physical activity.
 
-## Table of Contents
+## Table of Contents 📚
 - [Overview](#overview)
 - [Dataset](#dataset)
 - [Models Used](#models-used)
@@ -17,10 +17,10 @@ This project aims to predict the likelihood of an individual having diabetes bas
 In this project, two machine learning models were developed to predict whether an individual is likely to have diabetes or prediabetes based on 21 features.
 
 ### Objective:
-- Can we predict diabetes risk based on health-related survey data?
+- Can we predict diabetes risk based on health-related survey data? 🧠
 - Which factors are most predictive of diabetes?
 
-## Dataset
+## Dataset 📂
 The dataset used for this project is the [Diabetes Health Indicators Dataset](https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset) from Kaggle. It contains over 250,000 survey responses from the CDC’s 2015 BRFSS survey.
 
 - **Diabetes_012**: Target variable with 3 classes:
@@ -36,13 +36,13 @@ For this project, the target was binarized into two classes:
 - BMI (Body Mass Index)
 - Age
 - Income
-- Smoking Status
+- Smoking Status 🚬
 - Physical Activity
 - General Health
 - High Blood Pressure, Cholesterol, etc.
 
 ## Models Used
-1. **Random Forest Classifier**:
+1. **Random Forest Classifier** 🌲:
    - An ensemble method that builds multiple decision trees to make predictions.
    - Provides feature importance to understand which factors have the greatest influence on diabetes risk.
    - Achieved an accuracy of **84.37%** and ROC-AUC of **0.79**.
@@ -69,7 +69,7 @@ The confusion matrices and ROC curve for both models are shown below:
 ![Confusion Matrix - Random Forest](screenshots/00_confusion_matrix_rf.png)
 
 #### Logistic Regression
-![Confusion Matrix - Random Forest](screenshots/00_confusion_matrix_lr.png)
+![Confusion Matrix - Logistic Regression](screenshots/00_confusion_matrix_lr.png)
 
 #### ROC Curves
 ![ROC Curves for both models](screenshots/00_evaluation_roc_curve.png)
@@ -84,7 +84,7 @@ Top contributing factors:
 - **Age**: As expected, the older an individual, the higher the diabetes risk.
 - **Income**: Socioeconomic status plays a significant role in diabetes risk, possibly reflecting access to healthcare and lifestyle factors.
 
-## Visualizations
+## Visualizations 📈
 The following visualizations help interpret the models' performance:
 - **Confusion Matrix**: Shows the true vs. predicted classifications for both models.
 - **ROC Curve**: Evaluates the trade-off between true positive rate and false positive rate for both models.
@@ -109,7 +109,7 @@ To run this project on your local machine:
 
 4. Check the output for model performance, visualizations, and feature importance.
 
-## PowerPoint Presentation
+## PowerPoint Presentation 🎓
 You can find a PowerPoint presentation for my university conference summarizing this project [here](project_files/decoding_diabetes_conference.pptx).
 
 ## License
