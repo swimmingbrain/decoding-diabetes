@@ -125,7 +125,7 @@ To run this project on your local machine:
 4. Check the output for model performance, visualizations, and feature importance.
 
 ## PowerPoint Presentation 🎓
-You can find a PowerPoint presentation for my university conference summarizing this project [here](project_files/decoding_diabetes_conference.pptx).
+You can find a PowerPoint presentation and a PDF export for my university conference summarizing this project [here](project_files/decoding_diabetes_conference.pptx).
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
