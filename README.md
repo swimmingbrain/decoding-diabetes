@@ -1,6 +1,6 @@
 # Diabetes Prediction Using Machine Learning 🩺📊
 
-This project aims to predict the likelihood of an individual having diabetes based on various health indicators using two machine learning models: **Random Forest** and **Logistic Regression**. The dataset used comes from the CDC's 2015 Behavioral Risk Factor Surveillance System (BRFSS), with health-related features such as BMI, smoking status, and physical activity.
+This project aims to predict the likelihood of an individual having diabetes based on various health indicators using multiple machine learning models: **Random Forest**, **Logistic Regression**, and **Gradient Boosting**. The dataset used comes from the CDC's 2015 Behavioral Risk Factor Surveillance System (BRFSS), with health-related features such as BMI, smoking status, and physical activity.
 
 ## Table of Contents 📚
 - [Overview](#overview)
@@ -14,7 +14,7 @@ This project aims to predict the likelihood of an individual having diabetes bas
 - [License](#license)
 
 ## Overview
-In this project, two machine learning models were developed to predict whether an individual is likely to have diabetes or prediabetes based on 21 features.
+In this project, multiple machine learning models were developed to predict whether an individual is likely to have diabetes or prediabetes based on 21 features. Additionally, **undersampling** was applied to address class imbalance, and **univariate logistic regression analysis** was used to select the most important features.
 
 ### Objective:
 - Can we predict diabetes risk based on health-related survey data? 🧠
@@ -32,6 +32,8 @@ For this project, the target was binarized into two classes:
 - **0**: No diabetes
 - **1**: Prediabetes or diabetes
 
+To handle the class imbalance (more people without diabetes), **undersampling** was applied to reduce the majority class, ensuring balanced training data.
+
 ### Key Features:
 - BMI (Body Mass Index)
 - Age
@@ -45,25 +47,50 @@ For this project, the target was binarized into two classes:
 1. **Random Forest Classifier** 🌲:
    - An ensemble method that builds multiple decision trees to make predictions.
    - Provides feature importance to understand which factors have the greatest influence on diabetes risk.
-   - Achieved an accuracy of **84.37%** and ROC-AUC of **0.79**.
+   - Achieved an accuracy of **73.2%**, precision of **71.3%**, and ROC-AUC of **0.80**.
 
 2. **Logistic Regression**:
    - A simple and interpretable linear model for binary classification.
-   - Slightly outperformed Random Forest with an accuracy of **84.85%** and ROC-AUC of **0.82**.
+   - Achieved an accuracy of **74.2%**, precision of **73.4%**, and ROC-AUC of **0.81**.
+
+3. **Gradient Boosting**:
+   - A powerful ensemble method that iteratively builds decision trees to improve performance.
+   - Added after initial models to explore whether boosting would increase predictive performance.
+   - Achieved the best accuracy of **74.7%**, precision of **73.0%**, and ROC-AUC of **0.82**.
+
+## Univariate Logistic Regression 📊
+Before applying the models, a **univariate logistic regression** analysis was performed to assess the statistical significance of each feature. Only features with a p-value < 0.05 were selected for model building to reduce noise and improve accuracy.
+
+### Selected Features:
+- **HighBP**: Odds ratio 2.18, p-value < 0.001
+- **Age**: Odds ratio 1.78, p-value < 0.001
+- **DiffWalk**: Odds ratio 1.74, p-value < 0.001
+- **PhysHlth**: Odds ratio 1.56, p-value < 0.001
+- **GenHlth**: Odds ratio 2.49, p-value < 0.001
 
 ## Results
 - **Random Forest**:
-  - Accuracy: **84.37%**
-  - Precision: **50.26%**
-  - ROC-AUC: **0.79**
+  - Accuracy: **73.2%**
+  - Precision: **71.3%**
+  - ROC-AUC: **0.80**
 
 - **Logistic Regression**:
-  - Accuracy: **84.85%**
-  - Precision: **54.95%**
+  - Accuracy: **74.2%**
+  - Precision: **73.4%**
+  - ROC-AUC: **0.81**
+
+- **Gradient Boosting**:
+  - Accuracy: **74.7%**
+  - Precision: **73.0%**
   - ROC-AUC: **0.82**
 
+## Visualizations 📈
+The following visualizations help interpret the models' performance:
+- **Confusion Matrix**: Shows the true vs. predicted classifications for both models.
+- **ROC Curve**: Evaluates the trade-off between true positive rate and false positive rate for both models.
+
 ### Confusion Matrix and ROC Curve:
-The confusion matrices and ROC curve for both models are shown below:
+The confusion matrices and ROC curve for all models are shown below:
 
 #### Random Forest
 ![Confusion Matrix - Random Forest](screenshots/00_confusion_matrix_rf.png)
@@ -71,23 +98,11 @@ The confusion matrices and ROC curve for both models are shown below:
 #### Logistic Regression
 ![Confusion Matrix - Logistic Regression](screenshots/00_confusion_matrix_lr.png)
 
+#### Gradient Boosting
+![Confusion Matrix - Logistic Regression](screenshots/00_confusion_matrix_gb.png)
+
 #### ROC Curves
 ![ROC Curves for both models](screenshots/00_evaluation_roc_curve.png)
-
-## Feature Importance
-Random Forest provided insight into the most important features that contribute to the prediction of diabetes:
-
-![Feature Importance - Random Forest](screenshots/00_feature_importances.png)
-
-Top contributing factors:
-- **BMI**: Most important factor, directly correlated with diabetes risk.
-- **Age**: As expected, the older an individual, the higher the diabetes risk.
-- **Income**: Socioeconomic status plays a significant role in diabetes risk, possibly reflecting access to healthcare and lifestyle factors.
-
-## Visualizations 📈
-The following visualizations help interpret the models' performance:
-- **Confusion Matrix**: Shows the true vs. predicted classifications for both models.
-- **ROC Curve**: Evaluates the trade-off between true positive rate and false positive rate for both models.
 
 ## How to Run the Code
 To run this project on your local machine:
