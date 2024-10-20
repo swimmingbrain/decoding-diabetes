@@ -24,6 +24,13 @@ y_binary = y.apply(lambda x: 1 if x > 0 else 0)
 rus = RandomUnderSampler(random_state=42)
 X_resampled, y_resampled = rus.fit_resample(X, y_binary)
 
+# Calculate control-to-treatment ratio
+control_count = sum(y_resampled == 0)
+treatment_count = sum(y_resampled == 1)
+
+control_to_treatment_ratio = control_count / treatment_count
+print(f"Control-to-Treatment Ratio: {control_to_treatment_ratio}")
+
 # reset the index for both X_resampled and y_resampled to align indices
 X_resampled = X_resampled.reset_index(drop=True)
 y_resampled = pd.Series(y_resampled).reset_index(drop=True)
