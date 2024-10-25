@@ -10,7 +10,7 @@ from imblearn.under_sampling import RandomUnderSampler
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# load dataset
+# load dataset csv
 df = pd.read_csv("diabetes_012_health_indicators_BRFSS2015.csv")
 
 # split dataset into features and target
