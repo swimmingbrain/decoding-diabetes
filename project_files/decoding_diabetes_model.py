@@ -24,7 +24,7 @@ y_binary = y.apply(lambda x: 1 if x > 0 else 0)
 rus = RandomUnderSampler(random_state=42)
 X_resampled, y_resampled = rus.fit_resample(X, y_binary)
 
-# Calculate control-to-treatment ratio
+# calculate control-to-treatment ratio
 control_count = sum(y_resampled == 0)
 treatment_count = sum(y_resampled == 1)
 
