@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # load dataset csv
-df = pd.read_csv("diabetes_012_health_indicators_BRFSS2015.csv")
+df = pd.read_csv('diabetes_012_health_indicators_BRFSS2015.csv')
 
 # split dataset into features and target
 X = df.drop("Diabetes_012", axis=1)
@@ -34,6 +34,29 @@ print(f"Control-to-Treatment Ratio: {control_to_treatment_ratio}")
 # reset the index for both X_resampled and y_resampled to align indices
 X_resampled = X_resampled.reset_index(drop=True)
 y_resampled = pd.Series(y_resampled).reset_index(drop=True)
+
+
+# Bar plots for categorical features
+categorical_features = ['HighBP', 'HighChol', 'Smoker', 'Stroke', 'HeartDiseaseorAttack']
+fig, axes = plt.subplots(len(categorical_features), 1, figsize=(10, 30))
+for i, col in enumerate(categorical_features):
+    sns.countplot(x=col, hue='Diabetes_012', data=df, ax=axes[i])
+    axes[i].set_title(f'Distribution of {col} by Diabetes Classes')
+    axes[i].set_xlabel(col)
+    axes[i].set_ylabel('Count')
+plt.tight_layout()
+plt.show()
+
+# Countplots for binary features
+binary_features = ['PhysActivity', 'Fruits', 'Veggies', 'HeavyAlcoholConsump']
+fig, axes = plt.subplots(2, 2, figsize=(15, 10))
+axes = axes.flatten()
+for i, feature in enumerate(binary_features):
+    sns.countplot(data=df, x=feature, hue='Diabetes_012', ax=axes[i])
+    axes[i].set_title(f'{feature} Distribution by Diabetes Classes')
+plt.tight_layout()
+plt.show()
+
 
 # standardize the X variables for univariate logistic regression
 scaler = StandardScaler()
